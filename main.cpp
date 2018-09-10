@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
     addStringsFromFiles(debugArg.isPresent(), iconNames, cppFiles,
                         "QIcon::fromTheme\\(QStringLiteral\\(\"([^\"]+)\"\\)\\)", { 1 });
     addStringsFromFiles(debugArg.isPresent(), iconNames, qmlFiles,
-                        "(icon\\.name|iconName|source)\\: (\"([^\"]+)\"|[^\\?]* \\? \"([^\"]+)\" : \"([^\"]+)\")", { 3, 4, 5 });
+                        "(icon|icon\\.name|iconName|source)\\: (\"([^\"]+)\"|[^\\?]* \\? \"([^\"]+)\" : \"([^\"]+)\"|[^\\?]* \\? \\([^\\?]* \\? \"([^\"]+)\" : \"([^\"]+)\"\\) : \\([^\\?]* \\? \"([^\"]+)\" : \"([^\"]+)\"\\))", { 3, 4, 5, 6, 7, 8, 9 });
 
     // print results
     iconNames.erase(string());
