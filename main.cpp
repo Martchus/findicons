@@ -2,7 +2,6 @@
 
 #include <c++utilities/application/argumentparser.h>
 #include <c++utilities/io/ansiescapecodes.h>
-#include <c++utilities/io/catchiofailure.h>
 #include <c++utilities/io/misc.h>
 
 #include <filesystem>
@@ -38,9 +37,8 @@ void addStringsFromFiles(bool enableDebugOutput, set<string> &to, const vector<f
                     }
                 }
             }
-        } catch (...) {
-            const auto *ioError = catchIoFailure();
-            cerr << Phrases::Warning << "Unable to read " << file << ": " << ioError << Phrases::End;
+        } catch (const std::ios_base::failure &failure) {
+            cerr << Phrases::Warning << "Unable to read " << file << ": " << failure.what() << Phrases::End;
         }
     }
 }
