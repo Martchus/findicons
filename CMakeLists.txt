@@ -22,8 +22,7 @@ set(CONFIGURATION_PACKAGE_SUFFIX "" CACHE STRING "sets the suffix for find_packa
 find_package(c++utilities${CONFIGURATION_PACKAGE_SUFFIX} 5.0.0 REQUIRED)
 use_cpp_utilities()
 
-# use standard filesystem library
-list(APPEND PRIVATE_LIBRARIES "-lstdc++fs")
+use_standard_filesystem()
 
 # include modules to apply configuration
 include(BasicConfig)
