@@ -12,9 +12,8 @@
 #include <vector>
 
 using namespace std;
-using namespace ApplicationUtilities;
-using namespace EscapeCodes;
-using namespace IoUtilities;
+using namespace CppUtilities;
+using namespace CppUtilities::EscapeCodes;
 
 void addStringsFromFiles(bool enableDebugOutput, set<string> &to, const vector<filesystem::path> &files, const char *searchPattern, initializer_list<size_t> relevantCaptures) {
     const regex searchRegex(searchPattern);
@@ -58,7 +57,7 @@ int main(int argc, char *argv[])
     parser.setMainArguments({ &projectDirsArg, &debugArg, &helpArg });
 
     // parse specified arguments
-    parser.parseArgsOrExit(argc, argv);
+    parser.parseArgs(argc, argv);
 
     // find relevant files
     vector<filesystem::path> uiFiles, cppFiles, qmlFiles;
